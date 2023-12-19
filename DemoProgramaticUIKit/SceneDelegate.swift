@@ -6,36 +6,17 @@
 //
 
 import UIKit
-import OSLog
-
-
-extension Logger {
-	/// Using your bundle identifier is a great way to ensure a unique identifier.
-	private static var subsystem = Bundle.main.bundleIdentifier!
-
-	/// Logs the view cycles like a view that appeared.
-	static let viewCycle = Logger(subsystem: subsystem, category: "viewcycle")
-
-	/// All logs related to tracking and analytics.
-	static let statistics = Logger(subsystem: subsystem, category: "statistics")
-	
-	/// All logs related to tracking and analytics.
-	static let lifecycle = Logger(subsystem: subsystem, category: "lifecycle")
-}
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
 
+
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-		guard let windowScene = (scene as? UIWindowScene) else { return }
-		let window = UIWindow(windowScene: windowScene)
-		let viewController = ViewController()
-		let navController = UINavigationController(rootViewController: viewController)
-		window.rootViewController = navController
-		self.window = window
-		window.makeKeyAndVisible()
-		Logger.lifecycle.log("Executed \(#file) - \(#function): \(#line)")
+		// Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+		guard let _ = (scene as? UIWindowScene) else { return }
 	}
 
 	func sceneDidDisconnect(_ scene: UIScene) {
